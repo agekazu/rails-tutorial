@@ -1,0 +1,11 @@
+<h1><%= @article.title %></h1>
+<%= @article.body %>
+
+<ul>
+  <li><%= link_to "編集する", edit_article_path(@article) %></li>
+  <li><%= link_to "削除する", article_path(@article), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "削除してもよろしいですか?"
+                  } %></li>
+
+</ul>
