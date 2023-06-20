@@ -17,6 +17,11 @@
 </div>
 
 <div>
+    <%= form.label :status,"状態" %><br>
+    <%= form.select :status, %w[public private archived], selected: 'public' %>
+</div>
+
+<div>
     <%= form.submit "送信" %>
 </div>
 

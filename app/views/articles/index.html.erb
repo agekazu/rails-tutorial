@@ -1,10 +1,15 @@
 <h1>Article list</h1>
+
+記事数は <%= Article.public_count %> 件です
+
 <ul>
 <% @articles.each do |article| %>
   <!--<li> <%= article.title %> - <a href=<%= article_path(article) %>><%= article.body%></a> </li>-->
-  <li> 
-  <%= link_to article.title, article %>
+  <% unless article.archived? %>
+  <li>
+    <%= link_to article.title, article %>
   </li>
+  <% end %>
 <% end %>
 <br>
 <br>

@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  http_basic_authenticate_with name: 'hoge', password: 'hoge', except: %i[index show]
+
   def index
     @articles = Article.all
   end
@@ -12,9 +14,6 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    logger.debug(params)
-    logger.debug(article_params)
-
     @article = Article.new(article_params)
 
     if @article.save
@@ -48,6 +47,6 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :body)
+    params.require(:article).permit(:title, :body, :status)
   end
 end
